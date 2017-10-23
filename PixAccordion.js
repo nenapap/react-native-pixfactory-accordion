@@ -46,6 +46,12 @@ class PixAccordion extends Component {
     const { children, renderHeader, underlayColor, ...collapsibleProps } = this.props;
     return (
       <View>
+        <Collapsible
+          {...collapsibleProps}
+          collapsed={this.state.collapsed}
+        >
+          {children}
+        </Collapsible>
         <TouchableHighlight
           onPress={() => this._toggleCollapsed()}
           underlayColor={underlayColor}
@@ -54,12 +60,6 @@ class PixAccordion extends Component {
             {renderHeader()}
           </View>
         </TouchableHighlight>
-        <Collapsible
-          {...collapsibleProps}
-          collapsed={this.state.collapsed}
-        >
-          {children}
-        </Collapsible>
       </View>
     );
   }
